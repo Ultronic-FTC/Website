@@ -70,23 +70,45 @@ async function loadTeamMembers() {
   if (!grid) return;
 
   try {
-    const response = await fetch("members.json");
+    // Add cache-busting query parameter to ensure the latest file is fetched
+    const response = await fetch(`members.json?v=${new Date().getTime()}`);
     if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
     const data = await response.json();
     const members = data.members;
 
     if (members && members.length > 0) {
-      grid.innerHTML = members.map(member => `
+      grid.innerHTML = members.map(member => {
+        // More robust logic to ensure titles is always an array of valid strings
+let titles = [];
+
+if (Array.isArray(member.titles)) {
+    titles = member.titles
+        .filter(t => typeof t === "string" && t.trim() !== "");
+} else if (typeof member.titles === "string" && member.titles.trim() !== "") {
+    titles = [member.titles.trim()];
+} else if (typeof member.title === "string" && member.title.trim() !== "") {
+    titles = [member.title.trim()];
+}
+
+        return `
         <div class="team-card reveal-fade">
           <div class="team-card__image-wrapper">
               <img src="${member.img}" alt="Headshot of ${member.name}" class="team-card__image" loading="lazy" />
           </div>
           <div class="team-card__info">
               <h4 class="team-card__name">${member.name}</h4>
-              <p class="team-card__title">${member.title}</p>
+              <div class="team-card__roles-container" data-role-count="${Array.isArray(titles) ? titles.length : 0}">
+  ${
+    Array.isArray(titles)
+      ? titles.map(title => `<span class="team-card__role">${title || ''}</span>`).join('')
+      : ''
+  }
+</div>
           </div>
         </div>
-      `).join('');
+      `}).join('');
+
+      initializeRoleCarousels();
     } else {
       grid.innerHTML = "<p>Team member information is currently unavailable.</p>";
     }
@@ -94,6 +116,74 @@ async function loadTeamMembers() {
     console.error("Failed to load team members:", error);
     grid.innerHTML = "<p>There was an error loading team member data.</p>";
   }
+}
+
+/**
+ * Initializes the rotating role animations for team members.
+ */
+function initializeRoleCarousels() {
+  document.querySelectorAll('.team-card__roles-container').forEach(container => {
+    const roles = container.querySelectorAll('.team-card__role');
+    const roleCount = roles.length;
+
+    if (roleCount <= 1) {
+      if (roles.length > 0) roles[0].classList.add('is-active');
+      return;
+    }
+
+    let activeIndex = 0;
+    roles[activeIndex].classList.add('is-active');
+
+    if (roleCount === 2) {
+      let direction = 1; // 1 for forward (standard), -1 for backward (reverse)
+      // Initial state: role 0 is active, role 1 is next
+      roles[1].classList.add('is-next');
+
+      setInterval(() => {
+        const prevActiveIndex = activeIndex;
+        activeIndex = (activeIndex + 1) % roleCount;
+
+        roles.forEach(r => r.classList.remove('is-active', 'is-prev', 'is-next'));
+
+        roles[activeIndex].classList.add('is-active');
+        
+        if (direction === 1) {
+            // Standard transition: active role moves to 'prev'
+            roles[prevActiveIndex].classList.add('is-prev');
+        } else {
+            // Reverse transition: active role moves to 'next'
+            roles[prevActiveIndex].classList.add('is-next');
+        }
+        
+        // Flip direction for the next cycle
+        direction *= -1;
+      }, 2000);
+
+    } else { // 3+ roles
+      // Standard carousel initial state
+      roles[1].classList.add('is-next');
+      roles[roleCount - 1].classList.add('is-prev');
+
+      setInterval(() => {
+        activeIndex = (activeIndex + 1) % roleCount;
+        
+        roles.forEach((role, index) => {
+          role.classList.remove('is-active', 'is-prev', 'is-next');
+
+          const prevIndex = (activeIndex - 1 + roleCount) % roleCount;
+          const nextIndex = (activeIndex + 1) % roleCount;
+
+          if (index === activeIndex) {
+            role.classList.add('is-active');
+          } else if (index === prevIndex) {
+            role.classList.add('is-prev');
+          } else if (index === nextIndex) {
+            role.classList.add('is-next');
+          }
+        });
+      }, 2000);
+    }
+  });
 }
 
 /**
