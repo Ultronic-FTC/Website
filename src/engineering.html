@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Engineering | Ultronic FTC Robotics</title>
+  <meta name="description"
+    content="Explore the engineering design process behind Ultronic's award-winning robots. Innovation is in our DNA, from CAD and prototyping to testing and iteration." />
+  <meta name="theme-color" content="#e92b31" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="icon" href="/favicon.ico">
+  <style>
+    .groot-animated {
+      position: relative;
+      display: inline-block;
+      color: var(--color-primary);
+      font-weight: 700;
+    }
+
+    .groot-animated > i {
+      position: absolute;
+      inset: 0;
+      display: block;
+    }
+
+    @keyframes grow-fade {
+      0% { transform: scale(0); opacity: 0; }
+      50% { transform: scale(1.2); opacity: 1; }
+      100% { transform: scale(0); opacity: 0; }
+    }
+
+    /* The plant factory */
+    .groot-animated::before,
+    .groot-animated::after,
+    .groot-animated > i::before,
+    .groot-animated > i::after {
+      content: '🌱';
+      position: absolute;
+      font-size: 10px;
+      animation: grow-fade 3.5s linear infinite;
+      opacity: 0;
+    }
+
+    /* Plant 1 */
+    .groot-animated::before {
+      top: -10px;
+      left: 10%;
+      animation-delay: 0.2s;
+      font-size: 12px;
+    }
+
+    /* Plant 2 */
+    .groot-animated::after {
+      bottom: -8px;
+      left: 85%;
+      animation-delay: 1.2s;
+      font-size: 9px;
+    }
+
+    /* Plant 3 */
+    .groot-animated > i::before {
+      top: 10px;
+      left: 30%;
+      animation-delay: 2.2s;
+    }
+
+    /* Plant 4 */
+    .groot-animated > i::after {
+      top: -5px;
+      left: 65%;
+      animation-delay: 3s;
+      font-size: 11px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="background-texture" aria-hidden="true"></div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="/index.html">
+        <img src="/img/no_bg_ultronic_logo.png" alt="Ultronic Logo" class="logo-img" />
+        <span>Ultronic</span>
+      </a>
+      <nav class="primary-nav" aria-label="Primary" id="primary-nav">
+        <ul id="nav-menu" class="nav-menu">
+          <li><a href="/index.html">Home</a></li>
+          <li><a href="/engineering.html">Engineering</a></li>
+          <li><a href="/team.html">Our Team</a></li>
+          <li><a href="/impact.html">Impact</a></li>
+          <li><a href="/connect.html">Connect</a></li>
+          <li><a href="/sponsors.html">Sponsors</a></li>
+          <li><a href="https://discord.gg/CAcXCZYqgn" class="btn btn--primary" target="_blank" rel="noopener">Join
+              Discord</a></li>
+        </ul>
+      </nav>
+      <button class="nav-toggle" aria-controls="primary-nav" aria-expanded="false">
+        <span class="sr-only">Menu</span>
+        <span class="hamburger" aria-hidden="true"></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- Engineering -->
+    <section id="engineering">
+      <div class="container">
+        <div class="section-header">
+          <h1 class="section-title">Our Engineering Design Process</h1>
+          <p class="section-subtitle">Innovation is in our DNA. From brainstorming to CAD to iteration, every Ultronic robot embodies precision, teamwork, and creativity. We're currently ranked in the <strong style="color: var(--color-primary);">Top 10% Globally</strong> for our engineering prowess.</p>
+        </div>
+
+        <div class="card-grid">
+            <div class="card process-card reveal-fade">
+                <span class="process-card__number">01</span>
+                <h3 class="card__title">Brainstorm & Design</h3>
+                <p class="card__body">We kick off each season by deconstructing the game challenge, identifying key scoring strategies, and sketching initial concepts to define our robot's core architecture.</p>
+            </div>
+            <div class="card process-card reveal-fade">
+                <span class="process-card__number">02</span>
+                <h3 class="card__title">CAD & Prototyping</h3>
+                <p class="card__body">Every idea is brought to life in CAD, allowing us to validate geometry, test integration, and catch potential issues before a single part is machined. Prototypes follow to test mechanisms in the real world.</p>
+            </div>
+            <div class="card process-card reveal-fade">
+                <span class="process-card__number">03</span>
+                <h3 class="card__title">Build & Test</h3>
+                <p class="card__body">With a solid design, we move to fabrication and assembly. Each subsystem undergoes rigorous testing to evaluate performance, reliability, and consistency under competition pressure.</p>
+            </div>
+            <div class="card process-card reveal-fade">
+                <span class="process-card__number">04</span>
+                <h3 class="card__title">Iterate & Refine</h3>
+                <p class="card__body">Failure is a data point. We analyze test results, driver feedback, and competition data to continuously improve our systems, making our robot faster, stronger, and more reliable.</p>
+            </div>
+          </div>
+        </div>
+    </section>
+
+    <section class="section--surfaced">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">2025-26 DECODE Prototype: <span class="groot-animated">Groot<i></i></span></h2>
+                <p class="section-subtitle">A look at the key systems from our current season robot, which was made in <strong style="color: var(--color-primary);">THREE days</strong>.</p>
+            </div>
+            <div class="robot-gallery">
+              <figure class="robot-card reveal-fade">
+                <img src="/img/swyft.jpg" alt="A custom mecanum drivetrain" />
+                <figcaption class="robot-card__caption">
+                  <h3 class="robot-card__title">Mecanum Drivetrain</h3>
+                  <p>Optimized for agility and precise path following with custom-tuned odometry.</p>
+                </figcaption>
+              </figure>
+              <figure class="robot-card reveal-fade">
+                <img src="/img/intake.jpg" alt="A compliant intake mechanism" />
+                <figcaption class="robot-card__caption">
+                  <h3 class="robot-card__title">Intake Tunnel</h3>
+                  <p>A robust collection system designed for accessible and reliable ball storage and throughput</p>
+                </figcaption>
+              </figure>
+              <figure class="robot-card reveal-fade">
+                <img src="/img/turret.png" alt="Robot's camera and vision processing board" />
+                <figcaption class="robot-card__caption">
+                  <h3 class="robot-card__title">Position-Locking Turret</h3>
+                  <p>Turret designed with automatic locale-tracking in mind.</p>
+                </figcaption>
+              </figure>
+            </div>
+            
+            <div class="team-subsection">
+                <div class="section-header">
+                    <h2 class="section-title">Meet 1 Overview</h2>
+                    <br>
+                    <p class="section-subtitle">Following our separation from a world-renouned FTC team, Ultronic was left with <strong style="color: var(--color-primary);">under three weeks to align the stars</strong>. Not only did we have to design, build, and program a competition-ready robot from the ground up, but to also set up outreach events, line up sponsors, begin building a reputation both inside and outside of the FIRST community, and get our team structure in order.</p>
+                    <br>
+                    <p class="section-subtitle">After vehemently working on our robot for 11 days, we felt that our robot design was a little too ambitious for the time we had remaining. So, we shifted our focus to a simpler design, thus the advent of our first competition robot: <span class="groot-animated">Groot<i></i></span>.</p>
+                    <br>
+                    <p class="section-subtitle">Over the course of three days, we designed, iterated, tested, programmed, and practiced driving <span class="groot-animated">Groot<i></i></span> to achieve the highest success possible so that we were able to compete with those who have been working on their robots for months. We ended up placing in the <strong style="color: var(--color-primary);">top 10% among all FTC teams globally</strong>.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer__layout">
+      <div class="footer__brand">
+        <img src="/img/no_bg_ultronic_logo.png" alt="Ultronic Logo" class="logo-img" />
+        <p>&copy; <span id="year"></span> Ultronic FTC Robotics. All Rights Reserved.</p>
+      </div>
+      <nav class="footer-nav" aria-label="Footer">
+        <ul>
+            <li><a href="/index.html">Home</a></li>
+            <li><a href="/engineering.html">Engineering</a></li>
+            <li><a href="/team.html">Our Team</a></li>
+            <li><a href="/impact.html">Impact</a></li>
+            <li><a href="/sponsors.html">Sponsors</a></li>
+            <li><a href="/connect.html">Connect</a></li>
+            <li id="footer-america-link"><a href="/index.html#america">America</a></li>
+            <li><a href="https://www.instagram.com/ultronic.ftc" target="_blank" rel="noopener">Instagram</a></li>
+        </ul>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="/js/main.js" type="module"></script>
+</body>
+
+</html>

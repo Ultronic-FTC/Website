@@ -94,6 +94,29 @@ section {
   font-size: 1.125rem;
   color: var(--color-text-secondary);
 }
+.subsection-title {
+  font-size: clamp(1.75rem, 4vw, 2.25rem);
+  font-weight: 700;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+.two-column-layout {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3rem;
+    align-items: center;
+}
+.two-column-layout__image-wrapper {
+    border-radius: 1rem;
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+}
+.two-column-layout__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
 /* ===========================
    Buttons
    =========================== */
@@ -251,7 +274,7 @@ body.nav-open .hamburger::after {
 /* ===========================
    Mobile Navigation
    =========================== */
-@media (max-width: 768px) {
+@media (max-width: 992px) {
   .nav-toggle {
     display: block;
   }
@@ -307,6 +330,8 @@ body.nav-open .nav-menu li:nth-child(2) { transition-delay: 0.2s; }
 body.nav-open .nav-menu li:nth-child(3) { transition-delay: 0.3s; }
 body.nav-open .nav-menu li:nth-child(4) { transition-delay: 0.4s; }
 body.nav-open .nav-menu li:nth-child(5) { transition-delay: 0.5s; }
+body.nav-open .nav-menu li:nth-child(6) { transition-delay: 0.6s; }
+body.nav-open .nav-menu li:nth-child(7) { transition-delay: 0.7s; }
 
   .nav-menu a {
     font-size: 1.5rem;
@@ -347,10 +372,18 @@ body.nav-open .nav-menu li:nth-child(5) { transition-delay: 0.5s; }
   font-weight: 800;
   margin-bottom: 1rem;
 }
+.hero__tagline {
+  font-size: 1.25rem;
+  color: var(--color-text-primary);
+  max-width: 550px;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
 .hero__subtitle {
   font-size: 1.125rem;
   color: var(--color-text-secondary);
-  max-width: 500px;
+  max-width: 550px;
   margin-bottom: 2rem;
 }
 .hero__cta {
@@ -388,7 +421,7 @@ body.nav-open .nav-menu li:nth-child(5) { transition-delay: 0.5s; }
     order: 1;
     margin-bottom: 2rem;
   }
-  .hero__subtitle {
+  .hero__tagline, .hero__subtitle {
     margin-left: auto;
     margin-right: auto;
   }
@@ -422,18 +455,148 @@ body.nav-open .nav-menu li:nth-child(5) { transition-delay: 0.5s; }
 .card__body {
   color: var(--color-text-secondary);
 }
+
 /* ===========================
-   Robots Section
+   Process Cards (Engineering)
    =========================== */
-.robots-section {
-  background-color: var(--color-surface);
-  border-top: 1px solid var(--color-border);
-  border-bottom: 1px solid var(--color-border);
+.process-card {
+    position: relative;
+    overflow: hidden;
 }
+
+.process-card__number {
+    position: absolute;
+    top: 0.5rem;
+    right: 1.5rem;
+    font-size: 3.5rem;
+    font-weight: 800;
+    line-height: 1;
+    color: rgba(255, 255, 255, 0.05);
+    z-index: 0;
+    transition: color 0.3s ease;
+    user-select: none;
+}
+
+.process-card:hover .process-card__number {
+    color: rgba(255, 51, 51, 0.15);
+}
+
+.process-card .card__title,
+.process-card .card__body {
+    position: relative;
+    z-index: 1;
+}
+
+@media (min-width: 768px) {
+    #engineering .card-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* ===========================
+   Team Section
+   =========================== */
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 4rem;
+}
+.team-card {
+    background-color: var(--color-surface);
+    border-radius: 12px;
+    border: 1px solid var(--color-border);
+    transition: transform 0.2s ease, border-color 0.2s ease;
+    overflow: hidden;
+    text-align: center;
+}
+.team-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--color-primary);
+}
+.team-card__image-wrapper {
+    aspect-ratio: 1 / 1;
+}
+.team-card__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.team-card__info {
+    padding: 1rem;
+}
+.team-card__name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+.team-card__title {
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+}
+.team-subsection {
+    padding-top: 5rem;
+}
+
+/* ===========================
+   Community Impact Section
+   =========================== */
+.impact-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    text-align: center;
+    margin-bottom: 3rem;
+}
+.impact-stat__number {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--color-primary);
+}
+.impact-stat__label {
+    color: var(--color-text-secondary);
+}
+.impact-initiatives ul {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+.impact-initiatives li {
+    background-color: var(--color-surface);
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 1px solid var(--color-border);
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+.impact-initiatives li:hover {
+    transform: translateY(-5px);
+    border-color: var(--color-primary);
+}
+.callout {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-left: 4px solid var(--color-primary);
+    padding: 2rem;
+    border-radius: 8px;
+    text-align: center;
+    margin-top: 3rem;
+}
+.callout p {
+    font-size: 1.25rem;
+    font-weight: 600;
+    max-width: 600px;
+    margin: 0 auto 1.5rem auto;
+}
+
+/* ===========================
+   Robots Section (Engineering)
+   =========================== */
 .robot-gallery {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 1.5rem;
+  margin-top: 3rem;
 }
 .robot-card {
   border-radius: 12px;
@@ -604,6 +767,11 @@ body.nav-open .nav-menu li:nth-child(5) { transition-delay: 0.5s; }
 .scroller[data-animated="true"] .scroller__inner:hover {
   animation-play-state: paused;
 }
+
+
+.section--surfaced {
+  background-color: var(--color-background);
+}
 /* New Sponsor Card Styles */
 .sponsor-card {
   position: relative;
@@ -700,6 +868,77 @@ body.nav-open .nav-menu li:nth-child(5) { transition-delay: 0.5s; }
 }
 
 /* ===========================
+   Photo Grid
+   =========================== */
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+.photo-grid__item {
+    border-radius: 1rem;
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+}
+.photo-grid__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+/* ===========================
+   Sponsors Page
+   =========================== */
+.sponsor-tier {
+    margin-bottom: 4rem;
+}
+.sponsor-tier__title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 2rem;
+    position: relative;
+    padding-bottom: 1rem;
+}
+.sponsor-tier__title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background-color: var(--color-primary);
+    border-radius: 2px;
+}
+.sponsor-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    align-items: center;
+    justify-content: center;
+}
+.sponsor-logo-card {
+    background-color: white;
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 180px;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+.sponsor-logo-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--color-primary);
+}
+.sponsor-logo-card img {
+    max-width: 100%;
+    max-height: 100px;
+    object-fit: contain;
+}
+
+/* ===========================
    Footer
    =========================== */
 .site-footer {
@@ -727,6 +966,7 @@ body.nav-open .nav-menu li:nth-child(5) { transition-delay: 0.5s; }
   display: flex;
   gap: 1.5rem;
   list-style: none;
+  flex-wrap: wrap;
 }
 .footer-nav a {
   color: var(--color-text-secondary);

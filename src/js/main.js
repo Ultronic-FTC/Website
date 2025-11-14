@@ -31,12 +31,14 @@ const config = {
     scrollers: ".scroller",
     americaSection: "#america",
     footerAmericaLink: "#footer-america-link",
+    teamGrid: "#team-members-grid",
   },
 };
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
   updateYear();
   fetchDiscordMembers();
+  await loadTeamMembers(); // Wait for members to load before initializing animations
   initializeMobileMenu();
   initializeScrollAnimations();
   initializeScrollers();
@@ -58,6 +60,40 @@ async function fetchDiscordMembers() {
   const countEl = document.querySelector(config.selectors.discordCount);
   if (!countEl) return;
   countEl.textContent = "Join the conversation!";
+}
+
+/**
+ * Load team members from JSON and populate the grid
+ */
+async function loadTeamMembers() {
+  const grid = document.querySelector(config.selectors.teamGrid);
+  if (!grid) return;
+
+  try {
+    const response = await fetch("members.json");
+    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+    const data = await response.json();
+    const members = data.members;
+
+    if (members && members.length > 0) {
+      grid.innerHTML = members.map(member => `
+        <div class="team-card reveal-fade">
+          <div class="team-card__image-wrapper">
+              <img src="${member.img}" alt="Headshot of ${member.name}" class="team-card__image" loading="lazy" />
+          </div>
+          <div class="team-card__info">
+              <h4 class="team-card__name">${member.name}</h4>
+              <p class="team-card__title">${member.title}</p>
+          </div>
+        </div>
+      `).join('');
+    } else {
+      grid.innerHTML = "<p>Team member information is currently unavailable.</p>";
+    }
+  } catch (error) {
+    console.error("Failed to load team members:", error);
+    grid.innerHTML = "<p>There was an error loading team member data.</p>";
+  }
 }
 
 /**

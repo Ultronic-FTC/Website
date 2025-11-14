@@ -1,0 +1,15 @@
+{
+    "members": [
+        {"name":"Michael", "title":"Lead Mechanical", "img":"/img/headshots/michael.png"},
+        {"name":"Matthew", "title":"Lead Programming", "img":"/img/headshots/matthew.png"},
+        {"name":"Isaac", "title":"Lead Outreach", "img":"/img/headshots/isaac.png"},
+        {"name":"Colton", "title":"Lead Marketing", "img":"/img/headshots/colton.png"},
+        {"name":"Natalie", "title":"Lead Operations", "img":"/img/headshots/natalie.png"},
+        {"name":"Kylie", "title":"Lead Professional Outreach", "img":"/img/headshots/kylie.png"},
+        {"name":"Charlotte", "title":"Programming", "img":"/img/headshots/charlotte.png"},
+        {"name":"Catalina", "title":"Programming", "img":"/img/headshots/catalina.png"},
+        {"name":"Selma", "title":"Programming", "img":"/img/headshots/selma.png"},
+        {"name":"Owen", "title":"Mechanical", "img":"/img/headshots/owen.png"},
+        {"name":"Elayna", "title":"Marketing", "img":"/img/headshots/elayna.png"}
+    ]
+}
