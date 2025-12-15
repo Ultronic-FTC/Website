@@ -1,0 +1,837 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Robot | Ultronic FTC Robotics</title>
+  <meta name="description"
+    content="Explore the engineering design process behind Ultronic's award-winning robots. Innovation is in our DNA, from CAD and prototyping to testing and iteration." />
+  <meta name="theme-color" content="#e92b31" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="icon" href="/favicon.ico">
+  <style>
+    .groot-animated {
+      position: relative;
+      display: inline-block;
+      color: var(--color-primary);
+      font-weight: 700;
+    }
+
+    .groot-animated > i {
+      position: absolute;
+      inset: 0;
+      display: block;
+    }
+
+    @keyframes grow-fade {
+      0% { transform: scale(0); opacity: 0; }
+      50% { transform: scale(1.2); opacity: 1; }
+      100% { transform: scale(0); opacity: 0; }
+    }
+
+    /* The plant factory */
+    .groot-animated::before,
+    .groot-animated::after,
+    .groot-animated > i::before,
+    .groot-animated > i::after {
+      content: '🌱';
+      position: absolute;
+      font-size: 10px;
+      animation: grow-fade 3.5s linear infinite;
+      opacity: 0;
+    }
+
+    /* Plant 1 */
+    .groot-animated::before {
+      top: -10px;
+      left: 10%;
+      animation-delay: 0.2s;
+      font-size: 12px;
+    }
+
+    /* Plant 2 */
+    .groot-animated::after {
+      bottom: -8px;
+      left: 85%;
+      animation-delay: 1.2s;
+      font-size: 9px;
+    }
+
+    /* Plant 3 */
+    .groot-animated > i::before {
+      top: 10px;
+      left: 30%;
+      animation-delay: 2.2s;
+    }
+
+    /* Plant 4 */
+    .groot-animated > i::after {
+      top: -5px;
+      left: 65%;
+      animation-delay: 3s;
+      font-size: 11px;
+    }
+
+    /* ===== V2 TEASER SECTION ===== */
+
+    .v2-teaser {
+      position: relative;
+      margin-top: 4rem;
+      padding: 4rem 2rem;
+      border-radius: 16px;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      overflow: hidden;
+      text-align: center;
+    }
+
+    /* Tech grid pattern background */
+    .v2-teaser::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255, 51, 51, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 51, 51, 0.03) 1px, transparent 1px),
+        linear-gradient(rgba(255, 51, 51, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 51, 51, 0.02) 1px, transparent 1px);
+      background-size: 100px 100px, 100px 100px, 20px 20px, 20px 20px;
+      mask-image: radial-gradient(ellipse at center, black 0%, transparent 70%);
+      -webkit-mask-image: radial-gradient(ellipse at center, black 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Radial glow behind icon */
+    .v2-teaser::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(255, 51, 51, 0.15) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .v2-teaser__content {
+      position: relative;
+      z-index: 1;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .v2-teaser__badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(255, 51, 51, 0.1);
+      border: 1px solid rgba(255, 51, 51, 0.3);
+      color: var(--color-primary);
+      padding: 0.5rem 1rem;
+      border-radius: 50px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 3rem;
+    }
+
+    .v2-teaser__badge-dot {
+      width: 6px;
+      height: 6px;
+      background: var(--color-primary);
+      border-radius: 50%;
+      animation: pulse-dot 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
+    }
+
+    /* Mini Clock */
+    .v2-teaser__clock-container {
+      position: relative;
+      width: 140px;
+      height: 140px;
+      margin: 0 auto 2rem;
+    }
+
+    .v2-teaser__clock {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: var(--color-surface);
+      border: 2px solid var(--color-border);
+      position: relative;
+      box-shadow: 0 0 40px rgba(255, 51, 51, 0.15), inset 0 0 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .v2-teaser__clock-face {
+      position: absolute;
+      inset: 6px;
+      border-radius: 50%;
+      border: 1px solid var(--color-border);
+    }
+
+    .v2-teaser__clock-marker {
+      position: absolute;
+      width: 2px;
+      height: 8px;
+      background: var(--color-text-secondary);
+      left: 50%;
+      top: 8px;
+      transform-origin: 50% 62px;
+      margin-left: -1px;
+    }
+
+    .v2-teaser__clock-marker--large {
+      height: 10px;
+      background: var(--color-text-primary);
+    }
+
+    .v2-teaser__clock-marker:nth-child(1) { transform: rotate(30deg); }
+    .v2-teaser__clock-marker:nth-child(2) { transform: rotate(60deg); }
+    .v2-teaser__clock-marker:nth-child(3) { transform: rotate(90deg); }
+    .v2-teaser__clock-marker:nth-child(4) { transform: rotate(120deg); }
+    .v2-teaser__clock-marker:nth-child(5) { transform: rotate(150deg); }
+    .v2-teaser__clock-marker:nth-child(6) { transform: rotate(180deg); }
+    .v2-teaser__clock-marker:nth-child(7) { transform: rotate(210deg); }
+    .v2-teaser__clock-marker:nth-child(8) { transform: rotate(240deg); }
+    .v2-teaser__clock-marker:nth-child(9) { transform: rotate(270deg); }
+    .v2-teaser__clock-marker:nth-child(10) { transform: rotate(300deg); }
+    .v2-teaser__clock-marker:nth-child(11) { transform: rotate(330deg); }
+    .v2-teaser__clock-marker:nth-child(12) { transform: rotate(360deg); }
+
+    .v2-teaser__clock-hand {
+      position: absolute;
+      bottom: 50%;
+      left: 50%;
+      transform-origin: 50% 100%;
+      border-radius: 2px;
+    }
+
+    .v2-teaser__clock-hand--hour {
+      width: 3px;
+      height: 30px;
+      background: var(--color-text-primary);
+      margin-left: -1.5px;
+    }
+
+    .v2-teaser__clock-hand--minute {
+      width: 2px;
+      height: 42px;
+      background: var(--color-text-primary);
+      margin-left: -1px;
+    }
+
+    .v2-teaser__clock-hand--second {
+      width: 1px;
+      height: 48px;
+      background: var(--color-primary);
+      margin-left: -0.5px;
+    }
+
+    .v2-teaser__clock-center {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 8px;
+      height: 8px;
+      background: var(--color-primary);
+      border-radius: 50%;
+      z-index: 10;
+      box-shadow: 0 0 8px rgba(255, 51, 51, 0.5);
+    }
+
+    /* Orbiting rings */
+    .v2-teaser__clock-container::before {
+      content: '';
+      position: absolute;
+      inset: -15px;
+      border: 1px solid rgba(255, 51, 51, 0.2);
+      border-radius: 50%;
+      animation: orbit-spin 20s linear infinite;
+    }
+
+    .v2-teaser__clock-container::after {
+      content: '';
+      position: absolute;
+      inset: -28px;
+      border: 1px dashed rgba(255, 51, 51, 0.1);
+      border-radius: 50%;
+      animation: orbit-spin 30s linear infinite reverse;
+    }
+
+    @keyframes orbit-spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    /* Countdown display */
+    .v2-teaser__countdown {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .v2-teaser__countdown-item {
+      text-align: center;
+    }
+
+    .v2-teaser__countdown-value {
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: var(--color-primary);
+      line-height: 1;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .v2-teaser__countdown-label {
+      font-size: 0.65rem;
+      color: var(--color-text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-top: 0.25rem;
+    }
+
+    /* Floating particles */
+    .v2-teaser__particles {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .v2-teaser__particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: var(--color-primary);
+      border-radius: 50%;
+      opacity: 0;
+      animation: particle-float 4s ease-in-out infinite;
+    }
+
+    .v2-teaser__particle:nth-child(1) { left: 10%; top: 20%; animation-delay: 0s; }
+    .v2-teaser__particle:nth-child(2) { left: 20%; top: 60%; animation-delay: 0.5s; }
+    .v2-teaser__particle:nth-child(3) { left: 80%; top: 30%; animation-delay: 1s; }
+    .v2-teaser__particle:nth-child(4) { left: 70%; top: 70%; animation-delay: 1.5s; }
+    .v2-teaser__particle:nth-child(5) { left: 50%; top: 10%; animation-delay: 2s; }
+    .v2-teaser__particle:nth-child(6) { left: 30%; top: 80%; animation-delay: 2.5s; }
+    .v2-teaser__particle:nth-child(7) { left: 90%; top: 50%; animation-delay: 3s; }
+    .v2-teaser__particle:nth-child(8) { left: 5%; top: 45%; animation-delay: 3.5s; }
+
+    @keyframes particle-float {
+      0%, 100% {
+        opacity: 0;
+        transform: translateY(0) scale(0);
+      }
+      10% {
+        opacity: 0.8;
+        transform: translateY(0) scale(1);
+      }
+      90% {
+        opacity: 0.8;
+        transform: translateY(-30px) scale(1);
+      }
+      100% {
+        opacity: 0;
+        transform: translateY(-40px) scale(0);
+      }
+    }
+
+    .v2-teaser__title {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 800;
+      margin-bottom: 1rem;
+      line-height: 1.1;
+    }
+
+    .v2-teaser__title span {
+      color: var(--color-primary);
+    }
+
+    /* Glitch effect */
+    .v2-teaser.glitching {
+      animation: teaser-glitch 100ms steps(2) 8;
+    }
+
+    @keyframes teaser-glitch {
+      0% { transform: translate(0); filter: hue-rotate(0deg); }
+      25% { transform: translate(-2px, 1px); filter: hue-rotate(90deg); }
+      50% { transform: translate(2px, -1px); filter: hue-rotate(-90deg); }
+      75% { transform: translate(-1px, -1px); filter: hue-rotate(180deg); }
+      100% { transform: translate(0); filter: hue-rotate(0deg); }
+    }
+
+    .v2-teaser.glitching .v2-teaser__badge {
+      animation: badge-glitch 100ms steps(3) 8;
+    }
+
+    @keyframes badge-glitch {
+      0%, 100% { opacity: 1; transform: translateX(0); }
+      33% { opacity: 0.8; transform: translateX(-3px) skewX(-5deg); }
+      66% { opacity: 0.9; transform: translateX(3px) skewX(5deg); }
+    }
+
+    /* Chromatic aberration on glitch */
+    .v2-teaser.glitching .v2-teaser__clock {
+      animation: chromatic-glitch 100ms steps(2) 8;
+    }
+
+    @keyframes chromatic-glitch {
+      0%, 100% {
+        box-shadow: 0 0 40px rgba(255, 51, 51, 0.15), inset 0 0 20px rgba(0, 0, 0, 0.3);
+      }
+      25% {
+        box-shadow: -3px 0 0 rgba(255, 0, 0, 0.5), 3px 0 0 rgba(0, 255, 255, 0.5), inset 0 0 20px rgba(0, 0, 0, 0.3);
+      }
+      50% {
+        box-shadow: 2px 0 0 rgba(255, 0, 0, 0.5), -2px 0 0 rgba(0, 255, 255, 0.5), inset 0 0 20px rgba(0, 0, 0, 0.3);
+      }
+      75% {
+        box-shadow: -1px 0 0 rgba(255, 0, 0, 0.5), 1px 0 0 rgba(0, 255, 255, 0.5), inset 0 0 20px rgba(0, 0, 0, 0.3);
+      }
+    }
+
+    .v2-teaser__particle.glitch-emoji {
+      width: auto;
+      height: auto;
+      background: none;
+      font-size: 16px;
+      line-height: 1;
+    }
+
+    /* Glitched badge text */
+    .v2-teaser__badge.glitch-text {
+      background: rgba(255, 51, 51, 0.2);
+      border-color: rgba(255, 51, 51, 0.5);
+    }
+
+    .v2-teaser__subtitle {
+      font-size: 1.125rem;
+      color: var(--color-text-secondary);
+      margin-bottom: 3rem;
+      line-height: 1.6;
+    }
+
+    /* CTA link */
+    .v2-teaser__cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--color-primary);
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .v2-teaser__cta:hover {
+      gap: 0.75rem;
+    }
+
+    .v2-teaser__cta svg {
+      width: 18px;
+      height: 18px;
+      transition: transform 0.3s ease;
+    }
+
+    .v2-teaser__cta:hover svg {
+      transform: translateX(3px);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .v2-teaser {
+        padding: 3rem 1.5rem;
+      }
+
+      .v2-teaser__icon {
+        width: 100px;
+        height: 100px;
+      }
+    }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      .v2-teaser__badge-dot,
+      .v2-teaser__icon svg,
+      .v2-teaser__icon::before,
+      .v2-teaser__icon::after,
+      .v2-teaser__particle {
+        animation: none;
+      }
+
+      .v2-teaser__particle {
+        opacity: 0.5;
+      }
+
+      .v2-teaser__icon svg {
+        filter: drop-shadow(0 0 20px rgba(255, 51, 51, 0.3));
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="background-texture" aria-hidden="true"></div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="/index.html">
+        <img src="/img/no_bg_ultronic_logo.png" alt="Ultronic Logo" class="logo-img" />
+        <span>Ultronic</span>
+      </a>
+      <nav class="primary-nav" aria-label="Primary" id="primary-nav">
+        <ul id="nav-menu" class="nav-menu">
+          <li><a href="/index.html">Home</a></li>
+          <li><a href="/robot.html">Robot</a></li>
+          <li><a href="/team.html">Our Team</a></li>
+          <li><a href="/impact.html">Impact</a></li>
+          <li><a href="/connect.html">Connect</a></li>
+          <li><a href="/sponsors.html">Sponsors</a></li>
+          <li><a href="https://discord.gg/CAcXCZYqgn" class="btn btn--primary" target="_blank" rel="noopener">Join
+              Discord</a></li>
+        </ul>
+      </nav>
+      <button class="nav-toggle" aria-controls="primary-nav" aria-expanded="false">
+        <span class="sr-only">Menu</span>
+        <span class="hamburger" aria-hidden="true"></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- Engineering -->
+    <section id="engineering">
+      <div class="container">
+        <div class="section-header">
+          <h1 class="section-title">Our Engineering Design Process</h1>
+          <p class="section-subtitle">Innovation is in our DNA. From brainstorming to CAD to iteration, every Ultronic robot embodies precision, teamwork, and creativity. We're currently ranked in the <strong style="color: var(--color-primary);">Top 10% Globally</strong> for our engineering prowess.</p>
+        </div>
+
+        <div class="card-grid">
+            <div class="card process-card reveal-fade">
+                <span class="process-card__number">01</span>
+                <h3 class="card__title">Brainstorm & Design</h3>
+                <p class="card__body">We kick off each season by deconstructing the game challenge, identifying key scoring strategies, and sketching initial concepts to define our robot's core architecture.</p>
+            </div>
+            <div class="card process-card reveal-fade">
+                <span class="process-card__number">02</span>
+                <h3 class="card__title">CAD & Prototyping</h3>
+                <p class="card__body">Every idea is brought to life in CAD, allowing us to validate geometry, test integration, and catch potential issues before a single part is machined. Prototypes follow to test mechanisms in the real world.</p>
+            </div>
+            <div class="card process-card reveal-fade">
+                <span class="process-card__number">03</span>
+                <h3 class="card__title">Build & Test</h3>
+                <p class="card__body">With a solid design, we move to fabrication and assembly. Each subsystem undergoes rigorous testing to evaluate performance, reliability, and consistency under competition pressure.</p>
+            </div>
+            <div class="card process-card reveal-fade">
+                <span class="process-card__number">04</span>
+                <h3 class="card__title">Iterate & Refine</h3>
+                <p class="card__body">Failure is a data point. We analyze test results, driver feedback, and competition data to continuously improve our systems, making our robot faster, stronger, and more reliable.</p>
+            </div>
+          </div>
+        </div>
+    </section>
+
+    <section class="section--surfaced">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">2025-26 DECODE Prototype: <span class="groot-animated">Groot<i></i></span></h2>
+                <p class="section-subtitle">A look at the key systems from our current season robot, which was made in <strong style="color: var(--color-primary);">THREE days</strong>.</p>
+            </div>
+            <div class="robot-gallery">
+              <figure class="robot-card reveal-fade">
+                <img src="/img/swyft.jpg" alt="A custom mecanum drivetrain" />
+                <figcaption class="robot-card__caption">
+                  <h3 class="robot-card__title">Mecanum Drivetrain</h3>
+                  <p>Optimized for agility and precise path following with custom-tuned odometry.</p>
+                </figcaption>
+              </figure>
+              <figure class="robot-card reveal-fade">
+                <img src="/img/intake.jpg" alt="A compliant intake mechanism" />
+                <figcaption class="robot-card__caption">
+                  <h3 class="robot-card__title">Intake Tunnel</h3>
+                  <p>A robust collection system designed for accessible and reliable ball storage and throughput</p>
+                </figcaption>
+              </figure>
+              <figure class="robot-card reveal-fade">
+                <img src="/img/turret.png" alt="Robot's camera and vision processing board" />
+                <figcaption class="robot-card__caption">
+                  <h3 class="robot-card__title">Position-Locking Turret</h3>
+                  <p>Turret designed with automatic locale-tracking in mind.</p>
+                </figcaption>
+              </figure>
+            </div>
+            
+            <div class="team-subsection">
+                <div class="section-header">
+                    <h2 class="section-title">Meet 1 Overview</h2>
+                    <br>
+                    <p class="section-subtitle">Following our separation from a world-renouned FTC team, Ultronic was left with <strong style="color: var(--color-primary);">under three weeks to align the stars</strong>. Not only did we have to design, build, and program a competition-ready robot from the ground up, but to also set up outreach events, line up sponsors, begin building a reputation both inside and outside of the FIRST community, and get our team structure in order.</p>
+                    <br>
+                    <p class="section-subtitle">After vehemently working on our robot for 11 days, we felt that our robot design was a little too ambitious for the time we had remaining. So, we shifted our focus to a simpler design, thus the advent of our first competition robot: <span class="groot-animated">Groot<i></i></span>.</p>
+                    <br>
+                    <p class="section-subtitle">Over the course of three days, we designed, iterated, tested, programmed, and practiced driving <span class="groot-animated">Groot<i></i></span> to achieve the highest success possible so that we were able to compete with those who have been working on their robots for months. We ended up placing in the <strong style="color: var(--color-primary);">top 10% among all FTC teams globally</strong>.</p>
+                </div>
+            </div>
+
+            <!-- V2 TEASER -->
+            <div class="v2-teaser reveal-fade">
+              <!-- Floating particles -->
+              <div class="v2-teaser__particles">
+                <span class="v2-teaser__particle"></span>
+                <span class="v2-teaser__particle"></span>
+                <span class="v2-teaser__particle"></span>
+                <span class="v2-teaser__particle"></span>
+                <span class="v2-teaser__particle"></span>
+                <span class="v2-teaser__particle"></span>
+                <span class="v2-teaser__particle"></span>
+                <span class="v2-teaser__particle"></span>
+              </div>
+
+              <div class="v2-teaser__content">
+                <div class="v2-teaser__badge">
+                  <span class="v2-teaser__badge-dot"></span>
+                  In Development
+                </div>
+
+                <!-- Analog clock with countdown -->
+                <div class="v2-teaser__clock-container">
+                  <div class="v2-teaser__clock">
+                    <div class="v2-teaser__clock-face">
+                      <div class="v2-teaser__clock-marker v2-teaser__clock-marker--large"></div>
+                      <div class="v2-teaser__clock-marker"></div>
+                      <div class="v2-teaser__clock-marker v2-teaser__clock-marker--large"></div>
+                      <div class="v2-teaser__clock-marker"></div>
+                      <div class="v2-teaser__clock-marker v2-teaser__clock-marker--large"></div>
+                      <div class="v2-teaser__clock-marker"></div>
+                      <div class="v2-teaser__clock-marker v2-teaser__clock-marker--large"></div>
+                      <div class="v2-teaser__clock-marker"></div>
+                      <div class="v2-teaser__clock-marker v2-teaser__clock-marker--large"></div>
+                      <div class="v2-teaser__clock-marker"></div>
+                      <div class="v2-teaser__clock-marker v2-teaser__clock-marker--large"></div>
+                      <div class="v2-teaser__clock-marker"></div>
+                    </div>
+                    <div class="v2-teaser__clock-hand v2-teaser__clock-hand--hour" id="teaser-hour"></div>
+                    <div class="v2-teaser__clock-hand v2-teaser__clock-hand--minute" id="teaser-minute"></div>
+                    <div class="v2-teaser__clock-hand v2-teaser__clock-hand--second" id="teaser-second"></div>
+                    <div class="v2-teaser__clock-center"></div>
+                  </div>
+                </div>
+
+                <!-- Countdown -->
+                <div class="v2-teaser__countdown">
+                  <div class="v2-teaser__countdown-item">
+                    <div class="v2-teaser__countdown-value" id="teaser-days">--</div>
+                    <div class="v2-teaser__countdown-label">Days</div>
+                  </div>
+                  <div class="v2-teaser__countdown-item">
+                    <div class="v2-teaser__countdown-value" id="teaser-hours">--</div>
+                    <div class="v2-teaser__countdown-label">Hours</div>
+                  </div>
+                  <div class="v2-teaser__countdown-item">
+                    <div class="v2-teaser__countdown-value" id="teaser-mins">--</div>
+                    <div class="v2-teaser__countdown-label">Mins</div>
+                  </div>
+                  <div class="v2-teaser__countdown-item">
+                    <div class="v2-teaser__countdown-value" id="teaser-secs">--</div>
+                    <div class="v2-teaser__countdown-label">Secs</div>
+                  </div>
+                </div>
+
+                <h2 class="v2-teaser__title">Something Big is <span>Coming</span></h2>
+
+                <p class="v2-teaser__subtitle">
+                  Our next-generation robot is being engineered from the ground up.
+                  Faster. Smarter. More competitive than ever.
+                </p>
+
+                <a href="/reveal.html" class="v2-teaser__cta">
+                  Official Reveal
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+        </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer__layout">
+      <div class="footer__brand">
+        <img src="/img/no_bg_ultronic_logo.png" alt="Ultronic Logo" class="logo-img" />
+        <p>&copy; <span id="year"></span> Ultronic FTC Robotics. All Rights Reserved.</p>
+      </div>
+      <nav class="footer-nav" aria-label="Footer">
+        <ul>
+            <li><a href="/index.html">Home</a></li>
+            <li><a href="/robot.html">Robot</a></li>
+            <li><a href="/team.html">Our Team</a></li>
+            <li><a href="/impact.html">Impact</a></li>
+            <li><a href="/sponsors.html">Sponsors</a></li>
+            <li><a href="/connect.html">Connect</a></li>
+            <li id="footer-america-link"><a href="/index.html#america">America</a></li>
+            <li><a href="https://www.instagram.com/ultronic.ftc" target="_blank" rel="noopener">Instagram</a></li>
+        </ul>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="/js/main.js" type="module"></script>
+  <script>
+    (function() {
+      // Target date: Feb 27, 2026 @ 7pm EST
+      const TARGET_DATE = new Date('2026-02-27T19:00:00-05:00');
+
+      // Clock elements
+      const hourHand = document.getElementById('teaser-hour');
+      const minuteHand = document.getElementById('teaser-minute');
+      const secondHand = document.getElementById('teaser-second');
+
+      // Countdown elements
+      const daysEl = document.getElementById('teaser-days');
+      const hoursEl = document.getElementById('teaser-hours');
+      const minsEl = document.getElementById('teaser-mins');
+      const secsEl = document.getElementById('teaser-secs');
+
+      function updateClock() {
+        const now = new Date();
+        const hours = now.getHours() % 12;
+        const minutes = now.getMinutes();
+        const seconds = now.getSeconds();
+        const milliseconds = now.getMilliseconds();
+
+        const secondAngle = (seconds + milliseconds / 1000) * 6;
+        const minuteAngle = (minutes + seconds / 60) * 6;
+        const hourAngle = (hours + minutes / 60) * 30;
+
+        if (secondHand) secondHand.style.transform = `rotate(${secondAngle}deg)`;
+        if (minuteHand) minuteHand.style.transform = `rotate(${minuteAngle}deg)`;
+        if (hourHand) hourHand.style.transform = `rotate(${hourAngle}deg)`;
+      }
+
+      function updateCountdown() {
+        const now = new Date();
+        const diff = TARGET_DATE - now;
+
+        if (diff <= 0) {
+          if (daysEl) daysEl.textContent = '0';
+          if (hoursEl) hoursEl.textContent = '0';
+          if (minsEl) minsEl.textContent = '0';
+          if (secsEl) secsEl.textContent = '0';
+          return;
+        }
+
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const secs = Math.floor((diff % (1000 * 60)) / 1000);
+
+        if (daysEl) daysEl.textContent = days;
+        if (hoursEl) hoursEl.textContent = hours.toString().padStart(2, '0');
+        if (minsEl) minsEl.textContent = mins.toString().padStart(2, '0');
+        if (secsEl) secsEl.textContent = secs.toString().padStart(2, '0');
+      }
+
+      function tick() {
+        updateClock();
+        updateCountdown();
+        requestAnimationFrame(tick);
+      }
+
+      tick();
+
+      // Glitch effect
+      const teaser = document.querySelector('.v2-teaser');
+      const badge = teaser?.querySelector('.v2-teaser__badge');
+      const particles = teaser?.querySelectorAll('.v2-teaser__particle');
+
+      if (!teaser || !badge) return;
+
+      let glitchInterval = null;
+      let isGlitching = false;
+      const GLITCH_DELAY = 10000; // 10 seconds
+
+      const originalBadgeText = 'In Development';
+      const glitchBadgeText = 'Hawkeye';
+
+      function triggerGlitch() {
+        if (isGlitching) return;
+        isGlitching = true;
+
+        teaser.classList.add('glitching');
+        badge.classList.add('glitch-text');
+
+        const dot = badge.querySelector('.v2-teaser__badge-dot');
+        badge.textContent = '';
+        if (dot) badge.appendChild(dot);
+        badge.appendChild(document.createTextNode(glitchBadgeText));
+
+        particles.forEach(p => {
+          p.classList.add('glitch-emoji');
+          p.textContent = '🏹';
+        });
+
+        setTimeout(() => {
+          teaser.classList.remove('glitching');
+          badge.classList.remove('glitch-text');
+
+          badge.textContent = '';
+          if (dot) badge.appendChild(dot);
+          badge.appendChild(document.createTextNode(originalBadgeText));
+
+          particles.forEach(p => {
+            p.classList.remove('glitch-emoji');
+            p.textContent = '';
+          });
+
+          isGlitching = false;
+        }, 800);
+      }
+
+      function startGlitchCycle() {
+        if (glitchInterval) return;
+        glitchInterval = setInterval(triggerGlitch, GLITCH_DELAY);
+      }
+
+      function stopGlitchCycle() {
+        if (glitchInterval) {
+          clearInterval(glitchInterval);
+          glitchInterval = null;
+        }
+      }
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            startGlitchCycle();
+          } else {
+            stopGlitchCycle();
+          }
+        });
+      }, { threshold: 0.3 });
+
+      observer.observe(teaser);
+    })();
+  </script>
+</body>
+
+</html>

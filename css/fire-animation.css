@@ -1,0 +1,25 @@
+/*
+ * Fire text effect for "Ignite"
+ * This animation uses text-shadow to create a subtle, flickering glow effect.
+ */
+.fire-text {
+  /* Use display: inline-block to ensure transform works as expected */
+  display: inline-block; 
+  color: #f5f5f5; /* Slightly brighter base color for the text */
+  animation: fire-flicker 2.5s linear infinite;
+}
+
+@keyframes fire-flicker {
+  0%, 100% {
+    text-shadow: 0 0 5px #fff, 0 0 10px var(--color-primary), 0 0 20px var(--color-primary);
+  }
+  25% {
+    text-shadow: 0 0 6px #fff, 0 0 12px var(--color-primary), 0 0 24px var(--color-primary-dark);
+  }
+  50% {
+    text-shadow: 0 0 4px #fff, 0 0 8px var(--color-primary), 0 0 18px var(--color-primary);
+  }
+  75% {
+    text-shadow: 0 0 7px #fff, 0 0 14px var(--color-primary-dark), 0 0 28px var(--color-primary-dark);
+  }
+}
