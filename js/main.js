@@ -43,8 +43,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   initializeScrollAnimations();
   initializeScrollers();
   handleAmericaSectionVisibility();
-  fetchVolunteerHours();
-
+  initializeEventForm();
+  handleEventExpiration();
 });
 
 
@@ -316,5 +316,71 @@ async function handleAmericaSectionVisibility() {
     }
   } catch {
     /* silent */
+  }
+}
+
+/**
+ * Event registration form - submits to Google Forms
+ */
+function initializeEventForm() {
+  const form = document.getElementById("registration-form");
+  if (!form) return;
+
+  const GOOGLE_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSdY_XQRNkU9___wPcMmvnpozNrzoAQYmOO3_rm3jCmNUlHyXA/formResponse";
+
+  form.addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const successMsg = document.getElementById("form-success");
+
+    // Disable button and show loading state
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Submitting...";
+
+    // Collect form data
+    const formData = new FormData(form);
+
+    // Submit via fetch with no-cors mode
+    fetch(GOOGLE_FORM_URL, {
+      method: "POST",
+      mode: "no-cors",
+      body: formData
+    })
+    .then(function() {
+      // With no-cors we can't read the response, but data is sent
+      form.querySelector(".form-grid").style.display = "none";
+      form.querySelector(".form-submit").style.display = "none";
+      successMsg.hidden = false;
+    })
+    .catch(function(error) {
+      // Even errors often mean success with no-cors
+      console.log("Form submitted (no-cors):", error);
+      form.querySelector(".form-grid").style.display = "none";
+      form.querySelector(".form-submit").style.display = "none";
+      successMsg.hidden = false;
+    });
+  });
+}
+
+/**
+ * Handle event expiration - hide banner and redirect event page after deadline
+ * Deadline: December 27, 2025 at 12:00 PM EST
+ */
+function handleEventExpiration() {
+  const EVENT_DEADLINE = new Date('2025-12-27T12:00:00-05:00');
+  const now = new Date();
+
+  if (now >= EVENT_DEADLINE) {
+    // Hide the holiday banner on homepage
+    const banner = document.querySelector('.holiday-banner-wrapper');
+    if (banner) {
+      banner.style.display = 'none';
+    }
+
+    // Redirect event page to 404
+    if (window.location.pathname === '/event' || window.location.pathname === '/event.html') {
+      window.location.replace('/404');
+    }
   }
 }

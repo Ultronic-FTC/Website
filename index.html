@@ -39,18 +39,18 @@
   <!-- Header -->
   <header class="site-header">
     <div class="container">
-      <a class="brand" href="/index.html">
+      <a class="brand" href="/">
         <img src="/img/no_bg_ultronic_logo.png" alt="Ultronic Logo" class="logo-img" />
         <span>Ultronic</span>
       </a>
       <nav class="primary-nav" aria-label="Primary" id="primary-nav">
         <ul id="nav-menu" class="nav-menu">
-          <li><a href="/index.html">Home</a></li>
-          <li><a href="/robot.html">Robot</a></li>
-          <li><a href="/team.html">Our Team</a></li>
-          <li><a href="/impact.html">Impact</a></li>
-          <li><a href="/connect.html">Connect</a></li>
-          <li><a href="/sponsors.html">Sponsors</a></li>
+          <li><a href="/">Home</a></li>
+          <li><a href="/robot">Robot</a></li>
+          <li><a href="/team">Our Team</a></li>
+          <li><a href="/impact">Impact</a></li>
+          <li><a href="/connect">Connect</a></li>
+          <li><a href="/sponsors">Sponsors</a></li>
           <li><a href="https://discord.gg/CAcXCZYqgn" class="btn btn--primary" target="_blank" rel="noopener">Join
               Discord</a></li>
         </ul>
@@ -62,6 +62,34 @@
     </div>
   </header>
 
+  <!-- Holiday Event Banner -->
+  <div class="holiday-banner-wrapper">
+    <a href="/event" class="holiday-banner">
+      <div class="holiday-banner__particles" aria-hidden="true">
+        <span class="snowflake">❄</span>
+        <span class="snowflake">❅</span>
+        <span class="snowflake">❆</span>
+        <span class="snowflake">❄</span>
+        <span class="snowflake">❅</span>
+        <span class="snowflake">❆</span>
+        <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+        <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+        <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+        <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+        <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+        <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+        <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+        <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+      </div>
+      <div class="holiday-banner__content">
+        <span class="holiday-banner__badge">Winter Break Event</span>
+        <h2 class="holiday-banner__title">Florida FTC Holiday Gathering</h2>
+        <p class="holiday-banner__text">Join us for a community-building scrimmage with teams from across Florida!</p>
+        <span class="holiday-banner__cta">View Details & Register →</span>
+      </div>
+    </a>
+  </div>
+
   <main id="home">
     <!-- Hero -->
     <section class="hero">
@@ -70,8 +98,8 @@
           <h1 class="hero__title">Impact. Innovate. <span class="fire-text">Inspire.</span></h1>
           <p class="hero__tagline">We build robots that change the game while building a community that changes the world.</p>
           <div class="hero__cta">
-            <a href="/team.html" class="btn btn--primary">Meet The Team</a>
-            <a href="/sponsors.html" class="btn btn--secondary">Sponsor Us</a>
+            <a href="/team" class="btn btn--primary">Meet The Team</a>
+            <a href="/sponsors" class="btn btn--secondary">Sponsor Us</a>
           </div>
         </div>
         <div class="hero__visual">
@@ -193,7 +221,8 @@
         </div>
       </div>
 
-      <div class="scroller" data-speed="slow">
+      <!-- Row 1: Scrolls left -->
+      <div class="scroller scroller--mobile-all" data-speed="slow">
         <ul class="sponsor-list scroller__inner">
           <li>
             <a href="https://www.bankofamerica.com/" target="_blank" rel="noopener" class="sponsor-card">
@@ -251,6 +280,68 @@
               </div>
             </a>
           </li>
+          <!-- Mobile-only: these sponsors appear in row 1 on mobile, row 2 on desktop -->
+          <li class="sponsor-item--mobile-only">
+            <a href="https://www.cienagasystems.net" target="_blank" rel="noopener" class="sponsor-card">
+              <img src="/img/cienaga.png" alt="Cienaga Systems" class="sponsor-card__image" />
+              <div class="sponsor-card__overlay">
+                <h3 class="sponsor-card__name">Cienaga Systems</h3>
+                <p class="sponsor-card__desc">AI-driven network security</p>
+              </div>
+            </a>
+          </li>
+          <li class="sponsor-item--mobile-only">
+            <a href="https://www.littleranchers.com" target="_blank" rel="noopener" class="sponsor-card">
+              <img src="/img/littleranchers.jpeg" alt="Little Ranchers" class="sponsor-card__image" />
+              <div class="sponsor-card__overlay">
+                <h3 class="sponsor-card__name">Little Ranchers</h3>
+                <p class="sponsor-card__desc">For students to grow socially, spiritually, and physically in a loving environment.</p>
+              </div>
+            </a>
+          </li>
+          <li class="sponsor-item--mobile-only">
+            <a href="https://www.sarasotasignshop.com" target="_blank" rel="noopener" class="sponsor-card">
+              <img src="/img/sarasotasignshop.png" alt="Sarasota Sign Shop" class="sponsor-card__image" />
+              <div class="sponsor-card__overlay">
+                <h3 class="sponsor-card__name">Sarasota Sign Shop</h3>
+                <p class="sponsor-card__desc">Making companies visible and memorable</p>
+              </div>
+            </a>
+          </li>
+          <li class="sponsor-item--mobile-only">
+            <a href="" rel="noopener" class="sponsor-card">
+              <img src="/img/aethera.png" alt="Aethera" class="sponsor-card__image" />
+              <div class="sponsor-card__overlay">
+                <h3 class="sponsor-card__name">Aethera</h3>
+                <p class="sponsor-card__desc">Robotics and Innovation Lab</p>
+              </div>
+            </a>
+          </li>
+          <li class="sponsor-item--mobile-only">
+            <a href="https://ghaasfoundation.org/" target="_blank" rel="noopener" class="sponsor-card">
+              <img src="/img/genehaas.webp" alt="Gene Haas Foundation" class="sponsor-card__image" />
+              <div class="sponsor-card__overlay">
+                <h3 class="sponsor-card__name">Gene Haas Foundation</h3>
+                <p class="sponsor-card__desc">Building Skills for Manufacturing Careers</p>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Row 2: Scrolls right (hidden on mobile) -->
+      <div class="scroller scroller--reverse scroller--desktop-only" data-speed="slow" data-direction="reverse">
+        <ul class="sponsor-list scroller__inner">
+          <li>
+            <a href="https://lakewoodranch.com/life-on-the-ranch/themarket/" target="_blank" rel="noopener"
+              class="sponsor-card">
+              <img src="/img/lwrfm.png" alt="Lakewood Ranch Farmers' Market" class="sponsor-card__image" />
+              <div class="sponsor-card__overlay">
+                <h3 class="sponsor-card__name">Lakewood Ranch Farmers' Market</h3>
+                <p class="sponsor-card__desc">#1 Farmers' Market in America</p>
+              </div>
+            </a>
+          </li>
           <li>
             <a href="https://www.cienagasystems.net" target="_blank" rel="noopener" class="sponsor-card">
               <img src="/img/cienaga.png" alt="Cienaga Systems" class="sponsor-card__image" />
@@ -287,12 +378,21 @@
               </div>
             </a>
           </li>
+          <li>
+            <a href="https://ghaasfoundation.org/" target="_blank" rel="noopener" class="sponsor-card">
+              <img src="/img/genehaas.webp" alt="Gene Haas Foundation" class="sponsor-card__image" />
+              <div class="sponsor-card__overlay">
+                <h3 class="sponsor-card__name">Gene Haas Foundation</h3>
+                <p class="sponsor-card__desc">Building Skills for Manufacturing Careers</p>
+              </div>
+            </a>
+          </li>
         </ul>
       </div>
 
       <div class="container">
         <div class="sponsors-cta">
-          <a href="/sponsors.html" class="btn btn--secondary">Become a Sponsor</a>
+          <a href="/sponsors" class="btn btn--secondary">Become a Sponsor</a>
         </div>
       </div>
     </section>
@@ -311,12 +411,12 @@
       </div>
       <nav class="footer-nav" aria-label="Footer">
         <ul>
-            <li><a href="/index.html">Home</a></li>
-            <li><a href="/robot.html">Robot</a></li>
-            <li><a href="/team.html">Our Team</a></li>
-            <li><a href="/impact.html">Impact</a></li>
-            <li><a href="/sponsors.html">Sponsors</a></li>
-            <li><a href="/connect.html">Connect</a></li>
+            <li><a href="/">Home</a></li>
+            <li><a href="/robot">Robot</a></li>
+            <li><a href="/team">Our Team</a></li>
+            <li><a href="/impact">Impact</a></li>
+            <li><a href="/sponsors">Sponsors</a></li>
+            <li><a href="/connect">Connect</a></li>
 
             <li><a href="https://www.instagram.com/ultronic.ftc" target="_blank" rel="noopener">Instagram</a></li>
         </ul>
