@@ -1,14 +1,14 @@
 {
     "members": [
-        {"name":"Michael", "titles":["Lead Mechanical", "Operations", "Outreach", "Driver 1"], "img":"/img/headshots/michaeldance.png"},
-        {"name":"Matthew", "titles":["Lead Programming", "Professional Outreach"], "img":"/img/headshots/matthew.png"},
-        {"name":"Kylie", "titles":["Lead Professional", "Mechanical", "Marketing", "Outreach"], "img":"/img/headshots/kylie.png"},
-        {"name":"Isaac", "titles":["Lead Outreach", "Mechanical", "Operations", "Driver 2"], "img":"/img/headshots/isaac.png"},
-        {"name":"Natalie", "titles":["Lead Operations", "Mechanical", "Marketing", "Outreach"], "img":"/img/headshots/natalie.png"},
-        {"name":"Colton", "titles":["Lead Marketing", "Mechanical", "Professional Outreach", "Operations"], "img":"/img/headshots/colton.png"},
-        {"name":"Catalina", "titles":["Programming", "Professional Outreach", "Operations", "Outreach"], "img":"/img/headshots/catalina.png"},
-        {"name":"Owen", "titles":["Mechanical", "Outreach"], "img":"/img/headshots/owen.png"},
-        {"name":"Charlotte", "titles":["Programming", "Professional Outreach", "Marketing", "Outreach"], "img":"/img/headshots/charlotte.png"},
-        {"name":"Selma", "titles":["Programming", "Marketing", "Outreach"], "img":"/img/headshots/selma.png"}
+        {"name":"Michael", "titles":["Lead Mechanical", "Operations", "Outreach", "Driver 1"], "img":"/img/team/headshots/michaeldance.png"},
+        {"name":"Matthew", "titles":["Lead Programming", "Professional Outreach"], "img":"/img/team/headshots/matthew.png"},
+        {"name":"Kylie", "titles":["Lead Professional", "Mechanical", "Marketing", "Outreach"], "img":"/img/team/headshots/kylie.png"},
+        {"name":"Isaac", "titles":["Lead Outreach", "Mechanical", "Operations", "Driver 2"], "img":"/img/team/headshots/isaac.png"},
+        {"name":"Natalie", "titles":["Lead Operations", "Mechanical", "Marketing", "Outreach"], "img":"/img/team/headshots/natalie.png"},
+        {"name":"Colton", "titles":["Lead Marketing", "Mechanical", "Professional Outreach", "Operations"], "img":"/img/team/headshots/colton.png"},
+        {"name":"Catalina", "titles":["Programming", "Professional Outreach", "Operations", "Outreach"], "img":"/img/team/headshots/catalina.png"},
+        {"name":"Owen", "titles":["Mechanical", "Outreach"], "img":"/img/team/headshots/owen.png"},
+        {"name":"Charlotte", "titles":["Programming", "Professional Outreach", "Marketing", "Outreach"], "img":"/img/team/headshots/charlotte.png"},
+        {"name":"Selma", "titles":["Programming", "Marketing", "Outreach"], "img":"/img/team/headshots/selma.png"}
     ]
 }
