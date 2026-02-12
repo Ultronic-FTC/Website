@@ -85,6 +85,65 @@
       font-size: 11px;
     }
 
+    /* ===== HAWKEYE ANIMATED ===== */
+    .hawkeye-animated {
+      position: relative;
+      display: inline-block;
+      color: var(--color-primary);
+      font-weight: 700;
+    }
+
+    .hawkeye-animated > i {
+      position: absolute;
+      inset: 0;
+      display: block;
+    }
+
+    @keyframes arrow-fly {
+      0% { transform: translateX(-10px) rotate(-45deg); opacity: 0; }
+      20% { opacity: 1; }
+      80% { opacity: 1; }
+      100% { transform: translateX(10px) rotate(-45deg); opacity: 0; }
+    }
+
+    .hawkeye-animated::before,
+    .hawkeye-animated::after,
+    .hawkeye-animated > i::before,
+    .hawkeye-animated > i::after {
+      content: '🏹';
+      position: absolute;
+      font-size: 10px;
+      animation: arrow-fly 3s linear infinite;
+      opacity: 0;
+    }
+
+    .hawkeye-animated::before {
+      top: -12px;
+      left: 15%;
+      animation-delay: 0s;
+      font-size: 11px;
+    }
+
+    .hawkeye-animated::after {
+      bottom: -10px;
+      left: 80%;
+      animation-delay: 0.8s;
+      font-size: 9px;
+    }
+
+    .hawkeye-animated > i::before {
+      top: 8px;
+      left: 40%;
+      animation-delay: 1.6s;
+    }
+
+    .hawkeye-animated > i::after {
+      top: -8px;
+      left: 70%;
+      animation-delay: 2.4s;
+      font-size: 10px;
+    }
+
     /* ===== V2 TEASER SECTION ===== */
 
     .v2-teaser {
@@ -613,7 +672,7 @@
                 <div class="section-header">
                     <h2 class="section-title">Meet 3 Overview</h2>
                     <br>
-                    <p class="section-subtitle">Meet 3 was filled with excitement as we were testing out our first iteration of <strong style="color: var(--color-primary);">HAWKEYE</strong>. Knowing there was a risk that the subsystems wouldn't be reliable enough to last through a match, we came up with a plan B: <strong style="color: var(--color-primary);">Defense</strong>. We spent hours watching videos and developing a defensive strategy in which we wouldn't score any balls, only prevent the other alliance from scoring.</p>
+                    <p class="section-subtitle">Meet 3 was filled with excitement as we were testing out our first iteration of <span class="hawkeye-animated">HAWKEYE<i></i></span>. Knowing there was a risk that the subsystems wouldn't be reliable enough to last through a match, we came up with a plan B: <strong style="color: var(--color-primary);">Defense</strong>. We spent hours watching videos and developing a defensive strategy in which we wouldn't score any balls, only prevent the other alliance from scoring.</p>
                     <br>
                     <p class="section-subtitle">On competition day, we had our systems working, but they consistently jammed and we didn't want to risk damaging our robot. So we fully pivoted to our defensive strategy, which was so successful that we climbed to <strong style="color: var(--color-primary);">7th place in the region</strong>. For this meet, we owe our drive team a special thanks for their exceptional adaptability and execution under pressure.</p>
                     <br>
@@ -625,7 +684,7 @@
                 <div class="section-header">
                     <h2 class="section-title">League Championship Overview</h2>
                     <br>
-                    <p class="section-subtitle">League Championships showcased the culmination of months of iteration on <strong style="color: var(--color-primary);">HAWKEYE</strong>. We finally got our spindexer working reliably, allowing for consistent ball indexing and shooting. The new turret system was dialed in, and we achieved a reliable autonomous routine with auto park capabilities. Our drivers also developed effective zoning strategies to control the field.</p>
+                    <p class="section-subtitle">League Championships showcased the culmination of months of iteration on <span class="hawkeye-animated">HAWKEYE<i></i></span>. We finally got our spindexer working reliably, allowing for consistent ball indexing and shooting. The new turret system was dialed in, and we achieved a reliable autonomous routine with auto park capabilities. Our drivers also developed effective zoning strategies to control the field.</p>
                     <br>
                     <p class="section-subtitle">We were honored to receive the <strong style="color: var(--color-primary);">Inspire Award</strong>, the most prestigious award in FIRST Tech Challenge. This award recognizes teams that embody the true spirit of FIRST, demonstrating excellence in robot design, team spirit, and gracious professionalism. For a rookie team to earn this recognition in our first season is a testament to the dedication and passion of every member of Ultronic.</p>
                 </div>
