@@ -535,23 +535,26 @@
     /* ===== TEASER BANNER ===== */
 
     .teaser-banner {
-      position: sticky;
-      top: var(--header-height);
-      z-index: 50;
-      background: linear-gradient(90deg, #0d0d0d 0%, #1a0a0a 50%, #0d0d0d 100%);
-      border-bottom: 1px solid rgba(255, 51, 51, 0.3);
+      position: fixed;
+      bottom: 1.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 90;
+      background: rgba(13, 13, 13, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 51, 51, 0.25);
+      border-radius: 50px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 51, 51, 0.1);
       overflow: hidden;
     }
 
     .teaser-banner__content {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0.75rem 1.5rem;
+      padding: 0.6rem 1.25rem;
       display: flex;
       align-items: center;
-      justify-content: center;
-      gap: 1.5rem;
-      flex-wrap: wrap;
+      gap: 1rem;
+      white-space: nowrap;
     }
 
     .teaser-banner__left {
@@ -561,18 +564,19 @@
     }
 
     .teaser-banner__pulse {
-      width: 8px;
-      height: 8px;
+      width: 6px;
+      height: 6px;
       background: var(--color-primary);
       border-radius: 50%;
       animation: pulse-dot 1.5s ease-in-out infinite;
       box-shadow: 0 0 8px rgba(255, 51, 51, 0.6);
+      flex-shrink: 0;
     }
 
     .teaser-banner__label {
-      font-size: 0.8rem;
+      font-size: 0.7rem;
       font-weight: 700;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--color-primary);
     }
@@ -580,11 +584,11 @@
     .teaser-banner__countdown {
       display: flex;
       align-items: center;
-      gap: 0.25rem;
+      gap: 0.15rem;
     }
 
     .teaser-banner__time {
-      font-size: 1.25rem;
+      font-size: 1.1rem;
       font-weight: 800;
       color: var(--color-text-primary);
       font-variant-numeric: tabular-nums;
@@ -593,27 +597,27 @@
     }
 
     .teaser-banner__sep {
-      font-size: 1.25rem;
+      font-size: 1.1rem;
       font-weight: 800;
       color: var(--color-primary);
-      opacity: 0.6;
+      opacity: 0.5;
     }
 
     .teaser-banner__links {
       display: flex;
-      gap: 0.75rem;
+      gap: 0.5rem;
     }
 
     .teaser-banner__link {
-      font-size: 0.75rem;
+      font-size: 0.65rem;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.08em;
       color: var(--color-text-primary);
       background: rgba(255, 51, 51, 0.15);
       border: 1px solid rgba(255, 51, 51, 0.3);
-      padding: 0.3rem 0.75rem;
-      border-radius: 4px;
+      padding: 0.25rem 0.6rem;
+      border-radius: 50px;
       transition: all 0.2s ease;
       text-decoration: none;
     }
@@ -728,15 +732,25 @@
     }
 
     @media (max-width: 600px) {
+      .teaser-banner {
+        bottom: 1rem;
+        left: 1rem;
+        right: 1rem;
+        transform: none;
+        border-radius: 16px;
+      }
       .teaser-banner__content {
         padding: 0.5rem 1rem;
-        gap: 0.75rem;
+        gap: 0.6rem;
+        flex-wrap: wrap;
+        justify-content: center;
+        white-space: normal;
       }
       .teaser-banner__time {
         font-size: 1rem;
       }
       .teaser-banner__label {
-        font-size: 0.7rem;
+        font-size: 0.65rem;
       }
     }
 
@@ -790,27 +804,28 @@
     </div>
   </header>
 
-  <main>
-    <!-- Teaser Banner -->
-    <div class="teaser-banner" id="teaser-banner" style="display:none;">
-      <div class="teaser-banner__content">
-        <div class="teaser-banner__left">
-          <span class="teaser-banner__pulse"></span>
-          <span class="teaser-banner__label" id="teaser-banner-label">TEASER #1 DROPS IN</span>
-        </div>
-        <div class="teaser-banner__countdown" id="teaser-banner-countdown">
-          <span class="teaser-banner__time" id="tb-hours">--</span>
-          <span class="teaser-banner__sep">:</span>
-          <span class="teaser-banner__time" id="tb-mins">--</span>
-          <span class="teaser-banner__sep">:</span>
-          <span class="teaser-banner__time" id="tb-secs">--</span>
-        </div>
-        <div class="teaser-banner__links" id="teaser-banner-links"></div>
+  <!-- Teaser Banner (floating pill) -->
+  <div class="teaser-banner" id="teaser-banner" style="display:none;">
+    <div class="teaser-banner__content">
+      <div class="teaser-banner__left">
+        <span class="teaser-banner__pulse"></span>
+        <span class="teaser-banner__label" id="teaser-banner-label">TEASER #1 DROPS IN</span>
       </div>
-      <div class="teaser-banner__progress">
-        <div class="teaser-banner__progress-bar" id="teaser-banner-progress"></div>
+      <div class="teaser-banner__countdown" id="teaser-banner-countdown">
+        <span class="teaser-banner__time" id="tb-hours">--</span>
+        <span class="teaser-banner__sep">:</span>
+        <span class="teaser-banner__time" id="tb-mins">--</span>
+        <span class="teaser-banner__sep">:</span>
+        <span class="teaser-banner__time" id="tb-secs">--</span>
       </div>
+      <div class="teaser-banner__links" id="teaser-banner-links"></div>
     </div>
+    <div class="teaser-banner__progress">
+      <div class="teaser-banner__progress-bar" id="teaser-banner-progress"></div>
+    </div>
+  </div>
+
+  <main>
     <!-- Engineering -->
     <section id="engineering">
       <div class="container">
