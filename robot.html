@@ -537,7 +537,7 @@
     .teaser-banner {
       position: sticky;
       top: var(--header-height);
-      z-index: 99;
+      z-index: 101;
       background: linear-gradient(90deg, #0d0d0d 0%, #1a0a0a 50%, #0d0d0d 100%);
       border-bottom: 1px solid rgba(255, 51, 51, 0.3);
       overflow: hidden;
@@ -790,28 +790,27 @@
     </div>
   </header>
 
-  <!-- Teaser Banner -->
-  <div class="teaser-banner" id="teaser-banner" style="display:none;">
-    <div class="teaser-banner__content">
-      <div class="teaser-banner__left">
-        <span class="teaser-banner__pulse"></span>
-        <span class="teaser-banner__label" id="teaser-banner-label">TEASER #1 DROPS IN</span>
-      </div>
-      <div class="teaser-banner__countdown" id="teaser-banner-countdown">
-        <span class="teaser-banner__time" id="tb-hours">--</span>
-        <span class="teaser-banner__sep">:</span>
-        <span class="teaser-banner__time" id="tb-mins">--</span>
-        <span class="teaser-banner__sep">:</span>
-        <span class="teaser-banner__time" id="tb-secs">--</span>
-      </div>
-      <div class="teaser-banner__links" id="teaser-banner-links"></div>
-    </div>
-    <div class="teaser-banner__progress">
-      <div class="teaser-banner__progress-bar" id="teaser-banner-progress"></div>
-    </div>
-  </div>
-
   <main>
+    <!-- Teaser Banner -->
+    <div class="teaser-banner" id="teaser-banner" style="display:none;">
+      <div class="teaser-banner__content">
+        <div class="teaser-banner__left">
+          <span class="teaser-banner__pulse"></span>
+          <span class="teaser-banner__label" id="teaser-banner-label">TEASER #1 DROPS IN</span>
+        </div>
+        <div class="teaser-banner__countdown" id="teaser-banner-countdown">
+          <span class="teaser-banner__time" id="tb-hours">--</span>
+          <span class="teaser-banner__sep">:</span>
+          <span class="teaser-banner__time" id="tb-mins">--</span>
+          <span class="teaser-banner__sep">:</span>
+          <span class="teaser-banner__time" id="tb-secs">--</span>
+        </div>
+        <div class="teaser-banner__links" id="teaser-banner-links"></div>
+      </div>
+      <div class="teaser-banner__progress">
+        <div class="teaser-banner__progress-bar" id="teaser-banner-progress"></div>
+      </div>
+    </div>
     <!-- Engineering -->
     <section id="engineering">
       <div class="container">
