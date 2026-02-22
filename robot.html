@@ -532,6 +532,214 @@
       }
     }
 
+    /* ===== TEASER BANNER ===== */
+
+    .teaser-banner {
+      position: sticky;
+      top: var(--header-height);
+      z-index: 99;
+      background: linear-gradient(90deg, #0d0d0d 0%, #1a0a0a 50%, #0d0d0d 100%);
+      border-bottom: 1px solid rgba(255, 51, 51, 0.3);
+      overflow: hidden;
+    }
+
+    .teaser-banner__content {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0.75rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .teaser-banner__left {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .teaser-banner__pulse {
+      width: 8px;
+      height: 8px;
+      background: var(--color-primary);
+      border-radius: 50%;
+      animation: pulse-dot 1.5s ease-in-out infinite;
+      box-shadow: 0 0 8px rgba(255, 51, 51, 0.6);
+    }
+
+    .teaser-banner__label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-primary);
+    }
+
+    .teaser-banner__countdown {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .teaser-banner__time {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--color-text-primary);
+      font-variant-numeric: tabular-nums;
+      min-width: 2ch;
+      text-align: center;
+    }
+
+    .teaser-banner__sep {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--color-primary);
+      opacity: 0.6;
+    }
+
+    .teaser-banner__links {
+      display: flex;
+      gap: 0.75rem;
+    }
+
+    .teaser-banner__link {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--color-text-primary);
+      background: rgba(255, 51, 51, 0.15);
+      border: 1px solid rgba(255, 51, 51, 0.3);
+      padding: 0.3rem 0.75rem;
+      border-radius: 4px;
+      transition: all 0.2s ease;
+      text-decoration: none;
+    }
+
+    .teaser-banner__link:hover {
+      background: rgba(255, 51, 51, 0.3);
+      color: #fff;
+    }
+
+    .teaser-banner__progress {
+      height: 2px;
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .teaser-banner__progress-bar {
+      height: 100%;
+      background: linear-gradient(90deg, var(--color-primary), #ff6666);
+      width: 0%;
+      transition: width 1s linear;
+    }
+
+    @keyframes banner-flicker {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.85; }
+    }
+
+    .teaser-banner--flicker {
+      animation: banner-flicker 0.1s steps(2) 5;
+    }
+
+    /* ===== TEASER CARDS ===== */
+
+    .teaser-cards {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+
+    .teaser-card {
+      position: relative;
+      width: 200px;
+      height: 120px;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 51, 51, 0.3);
+      cursor: pointer;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+      text-decoration: none;
+      color: #fff;
+    }
+
+    .teaser-card:hover {
+      transform: scale(1.05);
+      border-color: var(--color-primary);
+      color: #fff;
+    }
+
+    .teaser-card__bg {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      filter: brightness(0.4);
+      transition: filter 0.2s ease;
+    }
+
+    .teaser-card:hover .teaser-card__bg {
+      filter: brightness(0.55);
+    }
+
+    .teaser-card__overlay {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .teaser-card__number {
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      text-shadow: 0 0 10px rgba(255, 51, 51, 0.5);
+    }
+
+    .teaser-card__play {
+      width: 32px;
+      height: 32px;
+      filter: drop-shadow(0 0 6px rgba(255, 51, 51, 0.4));
+      transition: transform 0.2s ease;
+    }
+
+    .teaser-card:hover .teaser-card__play {
+      transform: scale(1.15);
+    }
+
+    @media (max-width: 500px) {
+      .teaser-cards {
+        flex-direction: column;
+        align-items: center;
+      }
+      .teaser-card {
+        width: 100%;
+        max-width: 280px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .teaser-banner__content {
+        padding: 0.5rem 1rem;
+        gap: 0.75rem;
+      }
+      .teaser-banner__time {
+        font-size: 1rem;
+      }
+      .teaser-banner__label {
+        font-size: 0.7rem;
+      }
+    }
+
     /* Reduced motion */
     @media (prefers-reduced-motion: reduce) {
       .v2-teaser__badge-dot,
@@ -581,6 +789,27 @@
       </button>
     </div>
   </header>
+
+  <!-- Teaser Banner -->
+  <div class="teaser-banner" id="teaser-banner" style="display:none;">
+    <div class="teaser-banner__content">
+      <div class="teaser-banner__left">
+        <span class="teaser-banner__pulse"></span>
+        <span class="teaser-banner__label" id="teaser-banner-label">TEASER #1 DROPS IN</span>
+      </div>
+      <div class="teaser-banner__countdown" id="teaser-banner-countdown">
+        <span class="teaser-banner__time" id="tb-hours">--</span>
+        <span class="teaser-banner__sep">:</span>
+        <span class="teaser-banner__time" id="tb-mins">--</span>
+        <span class="teaser-banner__sep">:</span>
+        <span class="teaser-banner__time" id="tb-secs">--</span>
+      </div>
+      <div class="teaser-banner__links" id="teaser-banner-links"></div>
+    </div>
+    <div class="teaser-banner__progress">
+      <div class="teaser-banner__progress-bar" id="teaser-banner-progress"></div>
+    </div>
+  </div>
 
   <main>
     <!-- Engineering -->
@@ -754,6 +983,24 @@
                   </div>
                 </div>
 
+                <!-- Released Teaser Cards -->
+                <div class="teaser-cards" id="teaser-cards">
+                  <a class="teaser-card" id="teaser-card-1" href="https://www.youtube.com/watch?v=nxTLGEAiAxM" target="_blank" rel="noopener" style="display:none;">
+                    <div class="teaser-card__bg" style="background-image: url('https://img.youtube.com/vi/nxTLGEAiAxM/maxresdefault.jpg');"></div>
+                    <div class="teaser-card__overlay">
+                      <span class="teaser-card__number">TEASER #1</span>
+                      <svg class="teaser-card__play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                    </div>
+                  </a>
+                  <a class="teaser-card" id="teaser-card-2" href="https://www.youtube.com/watch?v=ajdJyhFOOHs" target="_blank" rel="noopener" style="display:none;">
+                    <div class="teaser-card__bg" style="background-image: url('https://img.youtube.com/vi/ajdJyhFOOHs/maxresdefault.jpg');"></div>
+                    <div class="teaser-card__overlay">
+                      <span class="teaser-card__number">TEASER #2</span>
+                      <svg class="teaser-card__play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                    </div>
+                  </a>
+                </div>
+
                 <h2 class="v2-teaser__title">Something Big is <span>Coming</span></h2>
 
                 <p class="v2-teaser__subtitle">
@@ -798,15 +1045,20 @@
   <script src="/js/main.js" type="module"></script>
   <script>
     (function() {
-      // Target date: Feb 27, 2026 @ 7pm EST
-      const TARGET_DATE = new Date('2026-02-27T19:00:00-05:00');
+      // === TEASER CONFIG ===
+      const TEASERS = [
+        { id: 1, videoId: 'nxTLGEAiAxM', date: new Date('2026-02-25T19:00:00-05:00') },
+        { id: 2, videoId: 'ajdJyhFOOHs', date: new Date('2026-02-26T19:00:00-05:00') },
+      ];
+      const REVEAL_DATE = new Date('2026-02-27T19:00:00-05:00');
 
-      // Clock elements
+      // === REVEAL COUNTDOWN (V2 section) ===
+      const TARGET_DATE = REVEAL_DATE;
+
       const hourHand = document.getElementById('teaser-hour');
       const minuteHand = document.getElementById('teaser-minute');
       const secondHand = document.getElementById('teaser-second');
 
-      // Countdown elements
       const daysEl = document.getElementById('teaser-days');
       const hoursEl = document.getElementById('teaser-hours');
       const minsEl = document.getElementById('teaser-mins');
@@ -851,15 +1103,103 @@
         if (secsEl) secsEl.textContent = secs.toString().padStart(2, '0');
       }
 
+      // === TEASER BANNER ===
+      const banner = document.getElementById('teaser-banner');
+      const bannerLabel = document.getElementById('teaser-banner-label');
+      const bannerLinks = document.getElementById('teaser-banner-links');
+      const tbHours = document.getElementById('tb-hours');
+      const tbMins = document.getElementById('tb-mins');
+      const tbSecs = document.getElementById('tb-secs');
+      const progressBar = document.getElementById('teaser-banner-progress');
+
+      let lastBannerLinksKey = '';
+
+      function updateBanner() {
+        const now = new Date();
+
+        // After reveal - hide banner
+        if (now >= REVEAL_DATE) {
+          if (banner) banner.style.display = 'none';
+          // Still show all teaser cards
+          TEASERS.forEach(function(t) {
+            const card = document.getElementById('teaser-card-' + t.id);
+            if (card) card.style.display = '';
+          });
+          return;
+        }
+
+        if (banner) banner.style.display = '';
+
+        // Determine released vs upcoming
+        const released = TEASERS.filter(function(t) { return now >= t.date; });
+        const upcoming = TEASERS.filter(function(t) { return now < t.date; });
+
+        var nextEvent, nextLabel, prevStart;
+
+        if (upcoming.length > 0) {
+          nextEvent = upcoming[0];
+          nextLabel = 'TEASER #' + nextEvent.id + ' DROPS IN';
+          prevStart = released.length > 0
+            ? released[released.length - 1].date
+            : new Date(TEASERS[0].date.getTime() - 48 * 60 * 60 * 1000);
+        } else {
+          nextEvent = { date: REVEAL_DATE };
+          nextLabel = 'REVEAL DROPS IN';
+          prevStart = TEASERS[TEASERS.length - 1].date;
+        }
+
+        if (bannerLabel) bannerLabel.textContent = nextLabel;
+
+        // Banner countdown
+        var diff = nextEvent.date - now;
+        var totalH = Math.floor(diff / (1000 * 60 * 60));
+        var m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        var s = Math.floor((diff % (1000 * 60)) / 1000);
+
+        if (tbHours) tbHours.textContent = totalH.toString().padStart(2, '0');
+        if (tbMins) tbMins.textContent = m.toString().padStart(2, '0');
+        if (tbSecs) tbSecs.textContent = s.toString().padStart(2, '0');
+
+        // Progress bar
+        var totalInterval = nextEvent.date - prevStart;
+        var elapsed = now - prevStart;
+        var pct = Math.min(100, Math.max(0, (elapsed / totalInterval) * 100));
+        if (progressBar) progressBar.style.width = pct + '%';
+
+        // Released teaser links (only rebuild when count changes)
+        var linksKey = released.map(function(t) { return t.id; }).join(',');
+        if (bannerLinks && linksKey !== lastBannerLinksKey) {
+          lastBannerLinksKey = linksKey;
+          bannerLinks.innerHTML = '';
+          released.forEach(function(t) {
+            var a = document.createElement('a');
+            a.href = 'https://www.youtube.com/watch?v=' + t.videoId;
+            a.target = '_blank';
+            a.rel = 'noopener';
+            a.className = 'teaser-banner__link';
+            a.textContent = 'WATCH #' + t.id;
+            bannerLinks.appendChild(a);
+          });
+        }
+
+        // Show/hide teaser cards in V2 section
+        TEASERS.forEach(function(t) {
+          var card = document.getElementById('teaser-card-' + t.id);
+          if (card) card.style.display = now >= t.date ? '' : 'none';
+        });
+      }
+
+      // === MAIN LOOP ===
       function tick() {
         updateClock();
         updateCountdown();
+        updateBanner();
         requestAnimationFrame(tick);
       }
 
       tick();
 
-      // Glitch effect
+      // === GLITCH EFFECT ===
       const teaser = document.querySelector('.v2-teaser');
       const badge = teaser?.querySelector('.v2-teaser__badge');
       const particles = teaser?.querySelectorAll('.v2-teaser__particle');
@@ -868,7 +1208,7 @@
 
       let glitchInterval = null;
       let isGlitching = false;
-      const GLITCH_DELAY = 10000; // 10 seconds
+      const GLITCH_DELAY = 10000;
 
       const originalBadgeText = 'In Development';
       const glitchBadgeText = 'Hawkeye';
@@ -879,6 +1219,12 @@
 
         teaser.classList.add('glitching');
         badge.classList.add('glitch-text');
+
+        // Also flicker the banner
+        if (banner) {
+          banner.classList.add('teaser-banner--flicker');
+          setTimeout(function() { banner.classList.remove('teaser-banner--flicker'); }, 500);
+        }
 
         const dot = badge.querySelector('.v2-teaser__badge-dot');
         badge.textContent = '';
