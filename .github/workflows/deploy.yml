@@ -1,0 +1,21 @@
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Deploy via rsync
+        uses: burnett01/rsync-deployments@7.0.1
+        with:
+          switches: -avz --delete --exclude='.git' --exclude='.github' --exclude='CLAUDE.md' --exclude='Caddyfile' --exclude='server.py'
+          path: ./
+          remote_path: /var/www/ultronic/
+          remote_host: 37.16.74.202
+          remote_user: root
+          remote_key: ${{ secrets.SSH_PRIVATE_KEY }}
