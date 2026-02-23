@@ -1,7 +1,7 @@
 (function() {
   var TEASERS = [
-    { id: 1, videoId: 'nxTLGEAiAxM', date: new Date('2026-02-20T19:00:00-05:00') }, // TEMP: moved to past for preview
-    { id: 2, videoId: 'ajdJyhFOOHs', date: new Date('2026-02-21T19:00:00-05:00') }, // TEMP: moved to past for preview
+    { id: 1, videoId: 'nxTLGEAiAxM', date: new Date('2026-02-20T19:00:00-05:00') }, // TEMP: past
+    { id: 2, videoId: 'ajdJyhFOOHs', date: new Date('2026-02-26T19:00:00-05:00') }, // TEMP: still future
   ];
   var REVEAL_DATE = new Date('2026-02-27T19:00:00-05:00');
 
