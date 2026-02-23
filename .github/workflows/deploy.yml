@@ -13,7 +13,7 @@ jobs:
       - name: Deploy via rsync
         uses: burnett01/rsync-deployments@7.0.1
         with:
-          switches: -avz --delete --exclude='.git' --exclude='.github' --exclude='CLAUDE.md' --exclude='Caddyfile' --exclude='server.py'
+          switches: -avz --delete --exclude='.git' --exclude='.github' --exclude='CLAUDE.md' --exclude='Caddyfile' --exclude='server.py' --exclude='.DS_Store' --exclude='.gitignore'
           path: ./
           remote_path: /var/www/ultronic/
           remote_host: 37.16.74.202
