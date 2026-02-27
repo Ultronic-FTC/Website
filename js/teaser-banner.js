@@ -2,6 +2,7 @@
   var TEASERS = [
     { id: 1, videoId: 'nxTLGEAiAxM', date: new Date('2026-02-25T19:00:00-05:00') },
     { id: 2, videoId: 'ajdJyhFOOHs', date: new Date('2026-02-26T19:00:00-05:00') },
+    { id: 3, videoId: 'nZXtCzvyQgk', date: new Date('2026-02-27T19:00:00-05:00') },
   ];
   var REVEAL_DATE = new Date('2026-02-27T19:00:00-05:00');
 
