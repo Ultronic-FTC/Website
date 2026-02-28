@@ -789,6 +789,7 @@
     }
 
     .reveal-video-wrapper {
+      position: relative;
       width: 100%;
       max-width: 900px;
       aspect-ratio: 16/9;
@@ -797,12 +798,52 @@
       border-radius: 8px;
       overflow: hidden;
       box-shadow: 0 0 60px rgba(255, 51, 51, 0.3);
+      display: block;
+      text-decoration: none;
+      cursor: pointer;
     }
 
-    .reveal-video-wrapper iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
+    .reveal-video-wrapper .thumb-bg {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      filter: brightness(0.4);
+      transition: filter 0.3s ease;
+    }
+
+    .reveal-video-wrapper:hover .thumb-bg {
+      filter: brightness(0.55);
+    }
+
+    .reveal-video-wrapper .thumb-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+    }
+
+    .reveal-video-wrapper .thumb-play {
+      width: 64px;
+      height: 64px;
+      color: #fff;
+      opacity: 0.9;
+      transition: transform 0.3s ease;
+    }
+
+    .reveal-video-wrapper:hover .thumb-play {
+      transform: scale(1.15);
+    }
+
+    .reveal-video-wrapper .thumb-label {
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.7);
     }
 
     .reveal-video-title {
@@ -905,15 +946,13 @@
 
   <!-- YouTube video container (shown after reveal) -->
   <div class="reveal-video-container">
-    <div class="reveal-video-wrapper">
-      <!-- YouTube premiere embed -->
-      <iframe
-        id="youtube-player"
-        src=""
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen>
-      </iframe>
-    </div>
+    <a class="reveal-video-wrapper" id="youtube-link" href="https://www.youtube.com/watch?v=nZXtCzvyQgk" target="_blank" rel="noopener">
+      <div class="thumb-bg" style="background-image: url('https://img.youtube.com/vi/nZXtCzvyQgk/maxresdefault.jpg');"></div>
+      <div class="thumb-overlay">
+        <svg class="thumb-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+        <span class="thumb-label">Watch on YouTube</span>
+      </div>
+    </a>
     <h1 class="reveal-video-title">Introducing <span>Hawkeye</span></h1>
     <p class="reveal-video-subtitle">The next evolution of competitive robotics.</p>
     <a href="/robot" class="reveal-video-back">
@@ -1032,7 +1071,7 @@
     const screenTear = $('.screen-tear');
     const content = $('.reveal-content');
     const videoContainer = $('.reveal-video-container');
-    const youtubePlayer = $('#youtube-player');
+    const youtubeLink = $('#youtube-link');
     const particles = $$('.reveal-particle');
 
     let hasRevealed = false;
@@ -1184,8 +1223,9 @@
       scanlines.classList.remove('active');
       await wait(400);
 
-      // Load and show YouTube video
-      youtubePlayer.src = `https://www.youtube.com/embed/${YOUTUBE_VIDEO_ID}?autoplay=1&rel=0`;
+      // Show YouTube thumbnail link
+      youtubeLink.href = `https://www.youtube.com/watch?v=${YOUTUBE_VIDEO_ID}`;
+      youtubeLink.querySelector('.thumb-bg').style.backgroundImage = `url('https://img.youtube.com/vi/${YOUTUBE_VIDEO_ID}/maxresdefault.jpg')`;
       document.body.classList.add('video-mode');
       videoContainer.classList.add('visible', 'glitch-in');
       particles.forEach(p => p.classList.remove('burst'));
