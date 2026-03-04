@@ -653,6 +653,54 @@ body.nav-open .hamburger::after {
     transform: translateY(-5px);
     border-color: var(--color-primary);
 }
+/* COASTWISE Featured Section */
+.coastwise-feature {
+    background-color: var(--color-surface);
+    border: 2px solid var(--color-border);
+    border-radius: 16px;
+    padding: 3rem;
+    margin-top: 4rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+.coastwise-feature::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--color-primary), #1a73e8, var(--color-primary));
+}
+.coastwise-feature__badge {
+    display: inline-block;
+    background: var(--color-primary);
+    color: #fff;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 0.4rem 1.2rem;
+    border-radius: 50px;
+    margin-bottom: 1.5rem;
+}
+.coastwise-feature__title {
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+}
+.coastwise-feature__body {
+    color: var(--color-text-secondary);
+    font-size: 1.1rem;
+    line-height: 1.8;
+    max-width: 800px;
+    margin: 0 auto 1.5rem auto;
+}
+.coastwise-feature .btn {
+    margin-top: 1rem;
+}
+
 .callout {
     background-color: var(--color-surface);
     border: 1px solid var(--color-border);
