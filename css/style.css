@@ -1102,7 +1102,7 @@ body.nav-open .hamburger::after {
 }
 
 /* ===========================
-   Holiday Banner (Homepage)
+   Application Banner (Homepage)
    =========================== */
 .holiday-banner-wrapper {
   padding: 1.5rem 1.5rem 0;
@@ -1113,8 +1113,8 @@ body.nav-open .hamburger::after {
   display: block;
   position: relative;
   overflow: hidden;
-  background: linear-gradient(135deg, #1a472a 0%, #2d5a3f 50%, #1a472a 100%);
-  border: 2px solid #3d7a52;
+  background: linear-gradient(110deg, #0d1b2a 0%, #1b263b 45%, #415a77 100%);
+  border: 1px solid rgba(96, 165, 250, 0.45);
   border-radius: 16px;
   padding: 1.25rem 1.5rem;
   text-decoration: none;
@@ -1123,7 +1123,7 @@ body.nav-open .hamburger::after {
 }
 .holiday-banner:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 30px rgba(45, 90, 63, 0.3);
+  box-shadow: 0 10px 30px rgba(30, 64, 175, 0.28);
   color: inherit;
 }
 .holiday-banner__particles {
@@ -1135,11 +1135,12 @@ body.nav-open .hamburger::after {
   pointer-events: none;
   overflow: hidden;
 }
-/* Snowflakes */
+/* Accent particles */
+/* snowflakes removed for non-seasonal style */
 .holiday-banner__particles .snowflake {
   position: absolute;
-  color: rgba(255, 255, 255, 0.25);
-  animation: snowfall 6s linear infinite;
+  display: none;
+
 }
 .holiday-banner__particles .snowflake:nth-child(1) { left: 3%; animation-delay: 0s; font-size: 1rem; }
 .holiday-banner__particles .snowflake:nth-child(2) { left: 18%; animation-delay: 1s; font-size: 0.8rem; }
@@ -1147,20 +1148,15 @@ body.nav-open .hamburger::after {
 .holiday-banner__particles .snowflake:nth-child(4) { left: 62%; animation-delay: 0.5s; font-size: 0.9rem; }
 .holiday-banner__particles .snowflake:nth-child(5) { left: 82%; animation-delay: 1.5s; font-size: 1.1rem; }
 .holiday-banner__particles .snowflake:nth-child(6) { left: 95%; animation-delay: 2.5s; font-size: 0.85rem; }
-@keyframes snowfall {
-  0% { transform: translateY(-10px) rotate(0deg); opacity: 0; }
-  10% { opacity: 1; }
-  90% { opacity: 1; }
-  100% { transform: translateY(70px) rotate(360deg); opacity: 0; }
-}
+
 /* Red dots */
 .holiday-banner__particles .dot {
   position: absolute;
   width: 5px;
   height: 5px;
-  background-color: rgba(196, 30, 58, 0.7);
+  background-color: rgba(96, 165, 250, 0.75);
   border-radius: 50%;
-  animation: float 3s ease-in-out infinite;
+  animation: float 3.5s ease-in-out infinite;
 }
 /* Row 1 - top */
 .holiday-banner__particles .dot:nth-child(7) { left: 2%; top: 15%; animation-delay: 0s; width: 4px; height: 4px; }
@@ -1201,7 +1197,7 @@ body.nav-open .hamburger::after {
 }
 .holiday-banner__badge {
   display: inline-block;
-  background-color: #c41e3a;
+  background-color: rgba(96, 165, 250, 0.2);
   color: #fff;
   font-size: 0.65rem;
   font-weight: 700;
@@ -1225,7 +1221,7 @@ body.nav-open .hamburger::after {
 .holiday-banner__cta {
   font-size: 0.9rem;
   font-weight: 600;
-  color: #5dba7d;
+  color: #93c5fd;
 }
 @media (max-width: 768px) {
   .holiday-banner-wrapper {
