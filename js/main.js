@@ -365,10 +365,10 @@ function initializeEventForm() {
 
 /**
  * Handle event expiration - hide banner and redirect event page after deadline
- * Deadline: December 27, 2025 at 12:00 PM EST
+ * Deadline: April 22, 2027 at 11:59 PM EST
  */
 function handleEventExpiration() {
-  const EVENT_DEADLINE = new Date('2025-12-27T12:00:00-05:00');
+  const EVENT_DEADLINE = new Date('2027-04-22T23:59:00-05:00');
   const now = new Date();
 
   if (now >= EVENT_DEADLINE) {
