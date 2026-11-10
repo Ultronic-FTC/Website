@@ -881,7 +881,10 @@ body.nav-open .hamburger::after {
    Sponsors Section
    =========================== */
 .sponsors-cta {
-  text-align: center;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
   margin-top: 3rem;
 }
 .scroller {
